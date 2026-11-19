@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI Mystery Quest | Detective Bureau</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<header class="topbar">
+ <a class="brand" href="/"><span class="mark">✦</span><span>AI MYSTERY <b>QUEST</b><small>THE DETECTIVE BUREAU</small></span></a>
+ <div class="top-actions"><span id="mode" class="mode">Checking mode…</span><button class="btn btn-ghost" id="historyBtn">Case history</button></div>
+</header>
+<main class="wrap">
+<section id="home">
+ <div class="hero"><div class="eyebrow">YOUR NEXT CASE AWAITS</div><h1>Every clue tells<br><em>a story.</em></h1>
+ <p>Step into the shoes of a detective. Examine the evidence, question the facts, and uncover the truth hidden in plain sight.</p>
+ <div class="stats"><div><b>03</b><span>CASE FILES</span></div><div><b>03</b><span>DIFFICULTIES</span></div><div><b>∞</b><span>WAYS TO DEDUCE</span></div></div></div>
+ <div class="section-head"><div><div class="eyebrow">THE CASE ARCHIVE</div><h2>Choose your investigation</h2></div><button class="btn btn-outline" id="generateBtn">✧ Generate AI case</button></div>
+ <div id="caseGrid" class="case-grid"><p>Loading case files…</p></div>
+</section>
+<section id="game" class="hidden">
+ <div class="game-head"><div><button class="text-btn" id="backBtn">← Case archive</button><div class="eyebrow">ACTIVE INVESTIGATION</div><h2 id="caseTitle"></h2></div><div class="score"><span>YOUR SCORE</span><b id="score">100</b></div></div>
+ <article class="panel briefing"><div class="panel-label">CASE BRIEFING</div><div id="meta" class="meta"></div><p id="story"></p></article>
+ <div class="columns">
+  <div class="main-column">
+   <section class="panel"><div class="panel-title"><div><div class="panel-label">PEOPLE OF INTEREST</div><h3>Suspect profiles</h3></div></div><div id="suspects" class="suspect-grid"></div></section>
+   <section class="panel"><div class="panel-title"><div><div class="panel-label">FORENSIC DISCOVERY</div><h3>Evidence to examine</h3></div></div><div id="evidence" class="evidence-grid"></div></section>
+   <section class="panel"><div class="panel-label">TEST YOUR DEDUCTION</div><h3>Case puzzle</h3><p id="puzzleQuestion"></p><div id="puzzleOptions" class="options"></div><button class="btn btn-gold" id="submitPuzzle">Submit answer</button><p id="puzzleFeedback" class="feedback"></p></section>
+   <section class="panel"><div class="panel-label">YOUR THEORY</div><h3>Make an accusation</h3><p>Review your collected evidence before naming the suspect.</p><div id="accuseOptions" class="options"></div><button class="btn btn-gold" id="accuseBtn">Submit final accusation</button><div id="result" class="result hidden"></div></section>
+  </div>
+  <aside class="side-column">
+   <section class="panel"><div class="panel-label">INVESTIGATION BOARD</div><h3>Collected evidence <span id="evidenceCount" class="count">0</span></h3><div id="board" class="board"><p class="muted">Your collected clues will appear here.</p></div></section>
+   <section class="panel"><div class="panel-label">NEED A NUDGE?</div><h3>Detective hints</h3><p class="muted">Hints cost 10 points and become more direct each time.</p><button class="btn btn-outline full" id="hintBtn">Request a hint · −10 pts</button><p id="hintText" class="hint-text"></p></section>
+   <section class="panel chat-panel"><div class="panel-label">YOUR AI ASSISTANT</div><h3>Detective Quinn</h3><div id="chatLog" class="chat-log"><div class="bubble bot">Good day, detective. Ask me to help connect the clues or examine an alibi.</div></div><form id="chatForm"><input id="chatInput" maxlength="600" placeholder="Ask about this case…" required><button class="btn btn-gold" type="submit">Send</button></form></section>
+  </aside>
+ </div>
+</section>
+<section id="historyView" class="hidden"><button class="text-btn" id="historyBack">← Back</button><div class="eyebrow">YOUR RECORD</div><h2>Investigation history</h2><div id="historyList" class="history-list"></div></section>
+</main>
+<div id="toast" class="toast"></div>
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body></html>
